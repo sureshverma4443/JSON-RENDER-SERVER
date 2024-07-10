@@ -76,6 +76,7 @@
             let res = await axios.post("https://renderserver-uluy.onrender.com/studentcontact", obj);
             console.log(res);
             getdata();
+            form.reset();
         } catch (error) {
             console.log(error);
         }
