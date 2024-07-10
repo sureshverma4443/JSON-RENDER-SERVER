@@ -27,11 +27,11 @@
     <div class="container">
         <form id="form">
             <h1>Student  Other Contacts</h1>
-            <Label>Mobile:</Label><br>
+            <Label>Mobile:-</Label><br>
             <input type="number" name="name" id="Mobile" placeholder="Enter your Mobile number" required><br>
-            <Label>insta id:</Label><br>
+            <Label>insta id:-</Label><br>
             <input type="text" name="email" id="instaid" placeholder="Enter your email" required><br>
-            <Label>Whatapps number</Label><br>
+            <Label>Whatapps number:-</Label><br>
             <input type="number" name="phone" id="Whatappsnumber" placeholder="Enter your Whatapps number" required>
            <br><br>
             <div class="button"><button id="btn">Submit</button></div>
@@ -73,7 +73,7 @@
         };
 
         try {
-            let res = await axios.post("http://localhost:8080/studentcontact", obj);
+            let res = await axios.post("https://renderserver-uluy.onrender.com/studentcontact", obj);
             console.log(res);
             getdata();
         } catch (error) {
@@ -83,7 +83,7 @@
 
     async function getdata() {
         try {
-            let res = await axios.get("http://localhost:8080/studentcontact");
+            let res = await axios.get("https://renderserver-uluy.onrender.com/studentcontact");
             displaydata(res.data);
         } catch (error) {
             console.log(error);
@@ -99,11 +99,11 @@
             let h1 = document.createElement("h1");
             h1.innerText = "Govt.Senior.Secondary School Jaipur";
             let h3 = document.createElement("h3");
-            h3.innerText = ele.Mobile;
+            h3.innerText = `Mobile:- ${ele.Mobile}`;
             let h4 = document.createElement("h4");
-            h4.innerText = ele.instaid;
+            h4.innerText = `instaid:- ${ele.instaid}`;
             let h5 = document.createElement("h5");
-            h5.innerText = ele.Whatappsnumber;
+            h5.innerText = `Whatappsnumber:- ${ele.Whatappsnumber}`;
             let button1 = document.createElement("button");
             button1.innerText = "Edit";
             button1.addEventListener("click", () => {
@@ -123,7 +123,7 @@
 
     async function deleteData(id) {
         try {
-            let res = await axios.delete(`http://localhost:8080/studentcontact/${id}`);
+            let res = await axios.delete(`https://renderserver-uluy.onrender.com/studentcontact/${id}`);
             console.log(res.data);
             getdata(); // Refresh the data after deletion
         } catch (error) {
@@ -150,7 +150,7 @@
         };
 
         try {
-            let res = await axios.patch(`http://localhost:8080/studentcontact/${currentid}`, updateobj);
+            let res = await axios.patch(`https://renderserver-uluy.onrender.com/studentcontact/${currentid}`, updateobj);
             console.log(res.data);
             alert("Updated");
             state = false;

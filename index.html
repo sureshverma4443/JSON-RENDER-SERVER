@@ -22,6 +22,8 @@
             <input placeholder="Search">
             <button>Search</button>
         </div>
+        <span>&#9776;</span>
+
     </nav>
     <div class="herosection">
         <img src="https://as1.ftcdn.net/v2/jpg/06/57/86/06/1000_F_657860698_QCyEqAPQ2K1aFgRMycUQq2FI3M5vwMuC.jpg">
@@ -79,9 +81,10 @@
         };
 
         try {
-            let res = await axios.post("http://localhost:8080/user", obj);
+            let res = await axios.post("https://renderserver-uluy.onrender.com/user", obj);
             console.log(res);
             getdata();
+            form.reset();
         } catch (error) {
             console.log(error);
         }
@@ -89,13 +92,13 @@
 
     async function getdata() {
         try {
-            let res = await axios.get("http://localhost:8080/user");
+            let res = await axios.get("https://renderserver-uluy.onrender.com/user");
             displaydata(res.data);
         } catch (error) {
             console.log(error);
         }
     }
-    getdata();
+
 
     function displaydata(data) {
         let Studentdata = document.getElementById("Studentdata");
@@ -133,7 +136,7 @@
 
     async function deleteData(id) {
         try {
-            let res = await axios.delete(`http://localhost:8080/user/${id}`);
+            let res = await axios.delete(`https://renderserver-uluy.onrender.com/user/${id}`);
             console.log(res.data);
             getdata(); // Refresh the data after deletion
         } catch (error) {
@@ -161,7 +164,7 @@
         };
 
         try {
-            let res = await axios.patch(`http://localhost:8080/user/${currentid}`, updateobj);
+            let res = await axios.patch(`https://renderserver-uluy.onrender.com/user/${currentid}`, updateobj);
             console.log(res.data);
             alert("Updated");
             state = false;
@@ -172,5 +175,8 @@
             console.log(error);
         }
     }
+    
+    
+getdata()
 </script>
 </html>

@@ -27,11 +27,11 @@
     <div class="container">
         <form id="form">
             <h1>Student Address</h1>
-            <Label>State</Label><br>
+            <Label>State:-</Label><br>
             <input type="text"  id="State" placeholder="Enter your State" required><br>
-            <Label>Dist.</Label><br>
+            <Label>Dist:-</Label><br>
             <input type="text"  id="Dist" placeholder="Enter your Dist." required><br>
-            <Label>Village</Label><br>
+            <Label>Village:-</Label><br>
             <input type="text"  id="Village" placeholder="Enter your Village" required>
            <br><br>
             <div class="button"><button id="btn">Submit</button></div>
@@ -72,7 +72,7 @@
         };
 
         try {
-            let res = await axios.post("http://localhost:8080/studentaddress", obj);
+            let res = await axios.post("https://renderserver-uluy.onrender.com/studentaddress", obj);
             console.log(res);
             getdata();
         } catch (error) {
@@ -82,7 +82,7 @@
 
     async function getdata() {
         try {
-            let res = await axios.get("http://localhost:8080/studentaddress");
+            let res = await axios.get("https://renderserver-uluy.onrender.com/studentaddress");
             displaydata(res.data);
         } catch (error) {
             console.log(error);
@@ -100,9 +100,9 @@
             let h3 = document.createElement("h3");
             h3.innerText = `State:- ${ele.State}`;
             let h4 = document.createElement("h4");
-            h4.innerText = ele.Dist;
+            h4.innerText = `Dist:- ${ele.Dist}`;
             let h5 = document.createElement("h5");
-            h5.innerText = ele.Village;
+            h5.innerText = `Village:- ${ele.Village}`;
             let button1 = document.createElement("button");
             button1.innerText = "Edit";
             button1.addEventListener("click", () => {
@@ -122,7 +122,7 @@
 
     async function deleteData(id) {
         try {
-            let res = await axios.delete(`http://localhost:8080/studentaddress/${id}`);
+            let res = await axios.delete(`https://renderserver-uluy.onrender.com/studentaddress/${id}`);
             console.log(res.data);
             getdata(); // Refresh the data after deletion
         } catch (error) {
@@ -149,7 +149,7 @@
         };
 
         try {
-            let res = await axios.patch(`http://localhost:8080/studentaddress/${currentid}`, updateobj);
+            let res = await axios.patch(`https://renderserver-uluy.onrender.com/studentaddress/${currentid}`, updateobj);
             console.log(res.data);
             alert("Updated");
             state = false;
